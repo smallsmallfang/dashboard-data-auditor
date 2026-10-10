@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "keys": [
+    "store",
+    "event_date",
+    "sku"
+  ],
+  "metrics": {
+    "quantity": {
+      "kind": "quantity",
+      "abs_tolerance": "0",
+      "rel_tolerance": "0"
+    },
+    "revenue": {
+      "kind": "amount",
+      "abs_tolerance": "0.01",
+      "rel_tolerance": "0"
+    },
+    "cogs": {
+      "kind": "amount",
+      "abs_tolerance": "0.01",
+      "rel_tolerance": "0"
+    },
+    "fees": {
+      "kind": "amount",
+      "abs_tolerance": "0.01",
+      "rel_tolerance": "0"
+    },
+    "profit": {
+      "kind": "amount",
+      "abs_tolerance": "0.01",
+      "rel_tolerance": "0"
+    }
+  },
+  "profit_formula": {
+    "target": "profit",
+    "terms": {
+      "revenue": "1",
+      "cogs": "-1",
+      "fees": "-1"
+    }
+  },
+  "datasets": {
+    "left": {
+      "path": "synthetic_source.csv",
+      "columns": {
+        "store": "store",
+        "event_date": "event_date",
+        "order_id": "order_id",
+        "sku": "sku",
+        "quantity": "quantity",
+        "revenue": "revenue",
+        "cogs": "cogs",
+        "fees": "fees",
+        "profit": "profit"
+      },
+      "unique_key": [
+        "store",
+        "order_id",
+        "sku"
+      ],
+      "date_field": "event_date",
+      "scope": {
+        "basis": "hybrid",
+        "date_basis": "demo_order_date",
+        "period_start": "2025-01-01",
+        "period_end": "2025-01-02",
+        "timezone": "UTC",
+        "currency": "RUB",
+        "filters_id": "synthetic-demo-v1",
+        "metric_definitions_id": "synthetic-metrics-v1",
+        "cost_policy": "synthetic-landed-cost-v1",
+        "fx_policy": "not_applicable",
+        "allocation_policy": "not_applicable",
+        "estimate_policy": "synthetic-all-actual",
+        "tax_policy": "synthetic-net-v1",
+        "snapshot_at": "2025-01-03T00:00:00Z"
+      }
+    },
+    "right": {
+      "path": "synthetic_warehouse.csv",
+      "columns": {
+        "store": "store",
+        "event_date": "event_date",
+        "order_id": "order_id",
+        "sku": "sku",
+        "quantity": "quantity",
+        "revenue": "revenue",
+        "cogs": "cogs",
+        "fees": "fees",
+        "profit": "profit"
+      },
+      "unique_key": [
+        "store",
+        "order_id",
+        "sku"
+      ],
+      "date_field": "event_date",
+      "scope": {
+        "basis": "hybrid",
+        "date_basis": "demo_order_date",
+        "period_start": "2025-01-01",
+        "period_end": "2025-01-02",
+        "timezone": "UTC",
+        "currency": "RUB",
+        "filters_id": "synthetic-demo-v1",
+        "metric_definitions_id": "synthetic-metrics-v1",
+        "cost_policy": "synthetic-landed-cost-v1",
+        "fx_policy": "not_applicable",
+        "allocation_policy": "not_applicable",
+        "estimate_policy": "synthetic-all-actual",
+        "tax_policy": "synthetic-net-v1",
+        "snapshot_at": "2025-01-03T00:00:00Z"
+      }
+    }
+  }
+}
